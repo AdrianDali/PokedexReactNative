@@ -1,0 +1,19 @@
+import { API_HOST } from "../utils/constanst"
+
+export async function getPokemonsApi(){
+    try{
+        //limitar a 20 por pagina para que nuestra aplicacion no se rompa
+        //construimos la url
+        const url = `${API_HOST}/pokemon?limit=20&offset=0`
+        //pedimos la peticions http
+        const response = await fetch(url);
+        //recuperamos los datos en un json
+        const result = await response.json();
+        //lo devolvemos
+        return result;
+
+    }
+    catch(error){
+        throw error;
+    }
+}
