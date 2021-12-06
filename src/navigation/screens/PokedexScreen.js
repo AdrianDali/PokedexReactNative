@@ -5,10 +5,10 @@ import React,{useState,useEffect} from 'react'
 import { Text } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getPokemonsApi, getPokemonDetailsByUrlApi } from '../../api/pokemon';
-
+import PokemonList from '../../components/PokemonList';
 export default function Pokedex() {
     const [pokemons, setPokemons] = useState([])//inicializado con array
-    console.log("pokemons ---> ", pokemons);
+    //console.log("pokemons ---> ", pokemons);
     //cuando el componente se monte se ejecutara una vez y nunca mas hasta que se monte
     useEffect(() => {
         //console.log("hola mundo")
@@ -44,7 +44,7 @@ export default function Pokedex() {
 
     return (
         <SafeAreaView>
-            <Text>pokedex</Text>
+            <PokemonList pokemons = {pokemons} />
         </SafeAreaView>
     )
 }
