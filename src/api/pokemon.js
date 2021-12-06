@@ -17,3 +17,14 @@ export async function getPokemonsApi(){
         throw error;
     }
 }
+
+//funcion que se comunicara con el servidor 
+export async function getPokemonDetailsByUrlApi(url){
+    try {
+        const response = await fetch(url);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        throw error;
+    }
+}
