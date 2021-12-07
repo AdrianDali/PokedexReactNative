@@ -1,7 +1,7 @@
 import { API_HOST } from "../utils/constants"
 
 export async function getPokemonsApi(endpointUrl){
-    console.log(endpointUrl);
+    //rconsole.log(endpointUrl);
     try{
         //limitar a 20 por pagina para que nuestra aplicacion no se rompa
         //construimos la url
