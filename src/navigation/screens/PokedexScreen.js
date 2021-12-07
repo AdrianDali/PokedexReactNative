@@ -2,12 +2,15 @@
 //use effect para crear un efecto el efecto 
 // se ejecuta cuando se monta el componente
 import React,{useState,useEffect} from 'react'
-import { Text } from 'react-native'
+import { Text,StyleSheet } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
+import { PickerItem } from 'react-native/Libraries/Components/Picker/Picker';
 import { getPokemonsApi, getPokemonDetailsByUrlApi } from '../../api/pokemon';
 import PokemonList from '../../components/PokemonList';
 export default function Pokedex() {
     const [pokemons, setPokemons] = useState([])//inicializado con array
+
+    const [nextUrl, setNextUrl] = useState(null)
     //console.log("pokemons ---> ", pokemons);
     //cuando el componente se monte se ejecutara una vez y nunca mas hasta que se monte
     useEffect(() => {
@@ -20,7 +23,10 @@ export default function Pokedex() {
 
     const loadPokemons = async() =>{
         try {
-            const response = await getPokemonsApi();
+            const response = await getPokemonsApi(nextUrl);
+            //estamos guardando la url
+            setNextUrl(response.next)
+            console.log(response);
             const pokemonsArray = [];
             //bucle asincrono debuelve cada una de las urls 
             for await(const pokemon of response.results) {
@@ -29,9 +35,9 @@ export default function Pokedex() {
                 pokemonsArray.push({
                     id: pokemonDetails.id,
                     name: pokemonDetails.name,
-                    type: pokemonDetails.types[0].name,
+                    type: pokemonDetails.types[0].type.name,
                     order: pokemonDetails.order,
-                    imagen: pokemonDetails.sprites.other['official-artwork'].front_default
+                    image: pokemonDetails.sprites.other['official-artwork'].front_default
 
                 })
             }
@@ -44,7 +50,9 @@ export default function Pokedex() {
 
     return (
         <SafeAreaView>
-            <PokemonList pokemons = {pokemons} />
+        
+
+            <PokemonList pokemons = {pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
         </SafeAreaView>
     )
 }
