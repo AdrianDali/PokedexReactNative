@@ -7,7 +7,7 @@ import AccountScreen from './screens/AccountScreen';
 import  Icon from 'react-native-vector-icons/FontAwesome5';
 import FavoriteNavigation from './FavoriteNavigation';
 import PokedexNavigation from './PokedexNavigation';
-import AccountNavigation from '../../AccountNavigation';
+import AccountNavigation from './AccountNavigation';
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {

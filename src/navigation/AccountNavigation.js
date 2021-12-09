@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import AccountScreen from './src/navigation/screens/AccountScreen'
+import AccountScreen from './screens/AccountScreen'
 import {createStackNavigator} from "@react-navigation/stack"
 
 const Stack = createStackNavigator();
