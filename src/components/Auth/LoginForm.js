@@ -4,10 +4,13 @@ import { Formik, useFormik } from 'formik'
 //sistema de validacoin
 import * as Yup from 'yup'
 import {user, userDetails} from '../../utils/userDB'
-
+import useAuth from '../../hooks/useAuth'
 
 export default function LoginForm() {
     const [error, setError] = useState("")
+    const {login} = useAuth();
+    //console.log(useAuth());
+    //console.log(useAuth());
     //controlar datos del formulario
     const formik = useFormik({
         initialValues: initialValues(),
@@ -21,6 +24,7 @@ export default function LoginForm() {
             if(username !==  user.username || password !== user.password){
                 setError("El usuario o contrasena no son correctos");
             }else {
+                login(userDetails)
                 console.log("Login correcto")
                 console.log(userDetails);
             }
