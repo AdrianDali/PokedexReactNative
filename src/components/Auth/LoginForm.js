@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput, Button, Keyboard } from 'react-native'
 import { Formik, useFormik } from 'formik'
 //sistema de validacoin
 import * as Yup from 'yup'
+import {user, userDetails} from '../../utils/userDB'
 
 
 export default function LoginForm() {
+    const [error, setError] = useState("")
     //controlar datos del formulario
     const formik = useFormik({
         initialValues: initialValues(),
@@ -13,8 +15,15 @@ export default function LoginForm() {
         validateOnChange: false,
         //funcion si el formulario es correcto
         onSubmit: (formValue) => {
-            console.log("Formulario enviado..");
-            console.log(formValue);
+            setError("")
+            const {username,password} = formValue;
+
+            if(username !==  user.username || password !== user.password){
+                setError("El usuario o contrasena no son correctos");
+            }else {
+                console.log("Login correcto")
+                console.log(userDetails);
+            }
         }
 
     })
@@ -38,6 +47,7 @@ export default function LoginForm() {
              <Button title='Entrar' onPress={formik.handleSubmit}/>
              <Text style={styles.error}>{formik.errors.username}</Text>
              <Text style={styles.error}>{formik.errors.password}</Text>
+             <Text style={styles.error}>{error}</Text>
         </View>
     )
 }
