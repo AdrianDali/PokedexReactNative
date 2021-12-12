@@ -1,16 +1,27 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Icon } from 'react-native-vector-icons/FontAwesome5'
+import  Icon  from 'react-native-vector-icons/FontAwesome5'
+import { addPokemonFavoriteApi,getPokemonsFavoriteApi } from '../../api/favorite'
 
-export default function Favorite() {
+export default function Favorite(props ) {
+    const {id} = props
     
-    const addFavorite = () => {
-        console.log("Anadir a favoritos ")
+    const addFavorite = async () => {
+        await addPokemonFavoriteApi(id)
     }
 
+ 
+
     return (
-        <Icon name="heart" color="#fff" size={20} onPress={addFavorite} style={{marginRight: 20}}/>
+        
+        <Icon 
+         name="heart" 
+         color="#fff" 
+         size={20} 
+         onPress={addFavorite} 
+         style={{marginRight: 20}}
+        />
+      
     )
 }
 
-const styles = StyleSheet.create({})
+

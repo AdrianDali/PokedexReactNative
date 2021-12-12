@@ -5,24 +5,28 @@ import Header from '../../components/Pokemon/Header';
 import Type from '../../components/Pokemon/Type';
 import Stats from '../../components/Pokemon/Stats';
 import  Icon from 'react-native-vector-icons/FontAwesome5';
+import Favorite from '../../components/Pokemon/Favorite'; 
+import useAuth from '../../hooks/useAuth';
 
 
 export default function Pokemon(props) {
     //doble destructuring
     const {navigation, route : {params}} = props;
     const [pokemon, setPokemon] = useState(null)
+    const {auth} = useAuth();
     
     //cada vez que cambiemos de navegacion o de parametros
     // se ejecutara este use effect
     useEffect(() => {
         navigation.setOptions({
-            //modificar header right
-            headerRight: () => null,
+            //                           auth && <Favorite/>   
+            //modificar header right     (auth  ? <Favorite/> : undefined)
+            headerRight: () => (auth  ? <Favorite id={pokemon?.id}/> : undefined),
             headerLeft: () => <Icon name="arrow-left" color="#fff" size={20}
             style={{marginLeft: 20}}
             onPress={navigation.goBack}/>
         })
-    },[navigation, params])
+    },[navigation, params, pokemon])
 
     
     //console.log("POKEEE" +pokemon.types.type)
