@@ -1,6 +1,6 @@
 import React, {useState, createContext} from 'react'
 import { View, Text } from 'react-native'
-
+//CONTEXTO SECION DE USUARIO
 export const AuthContext = createContext( {
     auth: undefined,
     login: () => {},

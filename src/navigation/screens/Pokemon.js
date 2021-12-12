@@ -5,10 +5,13 @@ import Header from '../../components/Pokemon/Header';
 import Type from '../../components/Pokemon/Type';
 import Stats from '../../components/Pokemon/Stats';
 import  Icon from 'react-native-vector-icons/FontAwesome5';
+
+
 export default function Pokemon(props) {
     //doble destructuring
     const {navigation, route : {params}} = props;
     const [pokemon, setPokemon] = useState(null)
+    
     //cada vez que cambiemos de navegacion o de parametros
     // se ejecutara este use effect
     useEffect(() => {
@@ -21,6 +24,7 @@ export default function Pokemon(props) {
         })
     },[navigation, params])
 
+    
     //console.log("POKEEE" +pokemon.types.type)
     //cada vez que params sea modificado se ejecutara nuestro hook use effect
     useEffect(() => {

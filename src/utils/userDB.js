@@ -5,7 +5,7 @@ export const user = {
 
 export const userDetails ={
     username:"dalicode",
-    firstName: "Agustin",
-    lastName: "Navarro Galdon",
-    email: "dasf@gmail.com"
+    firstName: "Adrian ",
+    lastName: "Dali",
+    email: "dalicode@gmail.com"
 }

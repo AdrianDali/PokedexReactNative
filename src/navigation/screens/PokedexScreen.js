@@ -7,12 +7,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { PickerItem } from 'react-native/Libraries/Components/Picker/Picker';
 import { getPokemonsApi, getPokemonDetailsByUrlApi } from '../../api/pokemon';
 import PokemonList from '../../components/PokemonList';
-export default function Pokedex() {
-    const [pokemons, setPokemons] = useState([])//inicializado con array
 
+
+export default function Pokedex() {
+
+    const [pokemons, setPokemons] = useState([])//inicializado con array
     const [nextUrl, setNextUrl] = useState(null)
     //console.log("pokemons ---> ", pokemons);
     //cuando el componente se monte se ejecutara una vez y nunca mas hasta que se monte
+    
+    
     useEffect(() => {
         //console.log("hola mundo")
         // '()()'  <--- es una funcion anonima autoejecutable
@@ -21,7 +25,9 @@ export default function Pokedex() {
         })()
     },[]);
 
+
     const loadPokemons = async() =>{
+
         try {
             const response = await getPokemonsApi(nextUrl);
             //estamos guardando la url
@@ -48,10 +54,9 @@ export default function Pokedex() {
         }
     }
 
+    
     return (
         <SafeAreaView>
-        
-
             <PokemonList pokemons = {pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
         </SafeAreaView>
     )

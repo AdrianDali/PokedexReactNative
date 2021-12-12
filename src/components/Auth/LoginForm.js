@@ -9,6 +9,7 @@ import useAuth from '../../hooks/useAuth'
 export default function LoginForm() {
     const [error, setError] = useState("")
     const {login} = useAuth();
+    //const {} = useAuth();
     //console.log(useAuth());
     //console.log(useAuth());
     //controlar datos del formulario
