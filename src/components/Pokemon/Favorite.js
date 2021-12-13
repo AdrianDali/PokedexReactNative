@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import  Icon  from 'react-native-vector-icons/FontAwesome5'
 import { addPokemonFavoriteApi,getPokemonsFavoriteApi } from '../../api/favorite'
 

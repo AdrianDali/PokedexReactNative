@@ -6,7 +6,8 @@ import {FAVORITE_STORAGE} from "../utils/constants"
 export async function getPokemonsFavoriteApi(){
     try {
         const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
-        return response;
+        //devuelve un array 
+        return JSON.parse(response || []);
     } catch (error) {
         throw(error)
     }
@@ -15,7 +16,7 @@ export async function getPokemonsFavoriteApi(){
 //funcion anadir pokemon a favoritos 
 export async function addPokemonFavoriteApi(id){
     try{
-        const favorites =[];
+        const favorites = await getPokemonsFavoriteApi();
         //se agrega
         favorites.push(id);
         await AsyncStorage.setItem(FAVORITE_STORAGE,JSON.stringify(favorites))
