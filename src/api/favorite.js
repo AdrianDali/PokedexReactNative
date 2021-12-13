@@ -25,3 +25,24 @@ export async function addPokemonFavoriteApi(id){
     }
 }
 
+export async function isPokemonFavoriteApi(id){
+    try {
+        const response = await getPokemonsFavoriteApi();
+        //busca dentro de response el id que se manda
+        return includes(response, id)
+    } catch (error) {
+        throw(error)
+    }
+}
+
+export async function removePokemonFavoriteApi(id){
+    try {
+        const favorites = await getPokemonsFavoriteApi();
+        //pull para borrar
+        const newFavorites = pull(favorites, id);
+        //stringigly transgorma 
+        await AsyncStorage.setItem(FAVORITE_STORAGE,JSON.stringify(newFavorites))
+    } catch (error) {
+        throw(error)
+    }
+}

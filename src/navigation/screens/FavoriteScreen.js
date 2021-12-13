@@ -1,10 +1,9 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {  Text , Button} from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
-import {getPokemonsFavoriteApi} from "../../api/favorite"
+import {getPokemonsFavoriteApi, isPokemonFavoriteApi} from "../../api/favorite"
 
 export default function Favorite() {
-
 
        const checkFavorites =  async () => {
             const response = await getPokemonsFavoriteApi();
