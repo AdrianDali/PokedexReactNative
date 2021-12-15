@@ -38,12 +38,12 @@ export default function UserData() {
         </Text>
         <View style={styles.dataContent}>
           <ItemMenu
-            title="Nombre"
+            title="Nombre: "
             text={`${auth.firstName} ${auth.lastName}   `}
           />
-          <ItemMenu title="Username" text={auth.username} />
-          <ItemMenu title="Email" text={auth.email} />
-          <ItemMenu title="Total Favoritos" text={`${total} pokemons`} />
+          <ItemMenu title="Username: " text={auth.username} />
+          <ItemMenu title="Email: " text={auth.email} />
+          <ItemMenu title="Total Favoritos: " text={`${total} pokemons`} />
         </View>
       </View>
       <Button title="Desconectarse" onPress={logout} style={styles.btnLogo} />

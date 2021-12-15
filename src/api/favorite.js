@@ -3,15 +3,15 @@ import {includes,pull} from "lodash"
 import {FAVORITE_STORAGE} from "../utils/constants"
 
 //obtener pokemons de la lista de favoritos
-export async function getPokemonsFavoriteApi(){
+export async function getPokemonsFavoriteApi() {
     try {
-        const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
-        //devuelve un array 
-        return JSON.parse(response || []);
+      const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
+      return JSON.parse(response || "[]");
+      // return response ? JSON.parse(response) : [];
     } catch (error) {
-        throw(error)
+      throw error;
     }
-}
+  }
 
 //funcion anadir pokemon a favoritos 
 export async function addPokemonFavoriteApi(id){
